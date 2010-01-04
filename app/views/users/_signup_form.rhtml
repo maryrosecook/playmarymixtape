@@ -1,0 +1,43 @@
+<tr>
+	<td class="signup_field_title">Address</td>
+	<td class="signup_field">
+		<%= text_field :audiography, :url_title, :size => 13, :class => 'text_field' %><span class="address_field_text">.playmary.com</span>
+	</td>
+	<td class="signup_field_validation">&nbsp;
+		<%= observe_field(:audiography_url_title,
+											:frequency => 0.5,
+											:update => :address_validation,
+											:url => { :action => :address_monitor }) %>
+		<span id="address_validation">no spaces, no punctuation</span>
+	</td>
+</tr>
+
+<tr>
+	<td class="signup_field_title">Email</td>
+	<td class="signup_field"><%= text_field :user, :email, :size => 25, :class => 'text_field' %></td>
+	<td class="signup_field_validation">&nbsp;
+		<%= observe_field(:user_email,
+											:frequency => 0.5,
+											:update => :email_validation,
+											:url => { :action => :email_monitor }) %>
+		<span id="email_validation">required</span>
+	</td>
+</tr>
+
+<tr>
+	<td class="signup_field_title">Password</td>
+	<td class="signup_field"><%= text_field :user, :password, :size => 25, :class => 'text_field' %></td>
+	<td class="signup_field_validation">&nbsp;
+		<%= observe_field(:user_password,
+											:frequency => 0.5,
+											:update => :password_validation,
+											:url => { :action => :password_monitor }) %>
+		<span id="password_validation">required</span>
+	</td>
+</tr>
+
+<script>
+	$('audiography_url_title').value='';
+	$('user_email').value='';
+	$('user_password').value='';
+</script>

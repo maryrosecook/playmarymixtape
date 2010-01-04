@@ -1,0 +1,22 @@
+<% form_tag "/track/add_from_search", :onsubmit => "if(!validateSearch(this)) { return false; }", :multipart => true do -%>
+	<span id="find_form">
+		<%= text_field_with_auto_complete :search, :text,
+																		{ :class => "find_mp3_text_field inactive_preloaded_field", :value => "#{Track::SEARCH_EXPLANATION}",
+																			:onfocus => "processPreloadedText(this, 'onfocus', '#{Track::SEARCH_EXPLANATION}');",
+																			:onblur => "processPreloadedText(this, 'onblur', '#{Track::SEARCH_EXPLANATION}');"},
+																			:autocomplete => "off", :frequency => "0.5" %>
+
+		<span id="find_rest_of_form" style="display:none;">
+			<div class="song_chosen">Song chosen</div>
+			<%= text_area :track, :comment, :cols => 35, :rows => 3, :class => "inactive_preloaded_field",
+										:onfocus => "processPreloadedText(this, 'onfocus', '#{Track::DEFAULT_COMMENT}');",
+										:onblur => "processPreloadedText(this, 'onblur', '#{Track::DEFAULT_COMMENT}');" %><br/>
+									
+			<%= submit_tag "Add", :class => 'upload_submit_button', :onclick => "disableWith(this, 'Adding...');
+																																					 Element.show('find_waiting_instructions');" %><br/>
+	    <span id="find_waiting_instructions" style="display:none;" class="waiting_message">
+				This will take about fifteen seconds.
+			</span>
+		</span>
+	</span>
+<% end-%>

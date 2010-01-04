@@ -1,0 +1,35 @@
+<!-- details -->
+<% onclick_val = "" %>
+<% if track.playable?() %>
+	<% onclick_val = "togglePlayback('song#{@i}');"%>
+<% end-%>
+
+<% track_dom_id = 'track_' + track.id.to_s %>
+<% controls_dom_id = 'drag_handle' + track.id.to_s %>
+
+<li id='<%= track_dom_id %>' 
+		class="track_list_item track_content"
+		onmouseover="Element.show('<%=controls_dom_id%>')"
+		onmouseout="Element.hide('<%=controls_dom_id%>')">
+
+	<div class="track_holder">
+		<%= render(:partial => 'track/controls_and_links', :locals => { :link_to_audiography => link_to_audiography,
+																																		:track => track,
+																																		:user_can_edit => user_can_edit,
+																																		:controls_dom_id => controls_dom_id } ) %>
+
+		<!-- clock -->
+		<div class="track_play_stop" style="float:right;"><span id="track_clock<%=@i%>" class="track_clock"></span></div>
+
+		<!-- title, comment -->
+		<div class="main_track_content" onclick="<%=onclick_val%>">
+			<span class="track_artist_and_title"><strong><%= track.artist %></strong> <%= track.title %></span>
+			<% if track.comment && track.comment != "" %>
+				<div class="track_comment">
+					<%= track.comment %>
+				</div>
+			<% end-%>
+		</div>
+		<br/>
+	</div>
+</li>

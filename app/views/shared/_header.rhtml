@@ -1,0 +1,57 @@
+<div class="main_title"><a href='<%=Linking.home()%>' class="main_title">Playmary</a></div>
+<div class="sub_title"><a href='<%=Linking.home()%>' class="sub_title">your life in songs</a></div>
+
+<% if !@no_nav %>
+	<div class="top_nav">
+	
+		<!-- LHS -->
+		<span class="general_top_nav_items">
+			<%= render(:partial => 'shared/nav_link', :locals => { :link_url => "/about", :link_text => "about" } ) %>&nbsp;
+			<%= render(:partial => 'shared/nav_link', :locals => { :link_url => "/track/latest", :link_text => "latest" } ) %>
+		</span>
+
+		<% if logged_in? %>
+			<% if current_user.audiography.get_url() %>
+				<% audiography_name = current_user.audiography.url_title %>
+				<% audiography_name = "my playmary" if current_user.fake? %>
+				<% if @at_logged_in_user_audiography_url %>
+					<span class="at_url"><%= audiography_name %></span>
+				<% else %>
+					<a href="<%=current_user.audiography.get_url()%>"><%= audiography_name %></a>
+				<% end-%>
+			<% end-%>
+			<% if current_user.fake? %>
+				<% if current_user.audiography.claimable? %>
+					&nbsp; <%= render(:partial => 'shared/nav_link', :locals => { :link_url => "/claim", :link_text => "claim my Playmary" } ) %>
+				<% end-%>
+				&nbsp; <%= render(:partial => 'shared/nav_link', :locals => { :link_url => "/login", :link_text => "login other user" } ) %>
+			<% elsif current_user.real? %>
+				&nbsp; <%= render(:partial => 'shared/nav_link', :locals => { :link_url => "/logout", :link_text => "logout" } ) %>
+			<% end-%>
+		<% else %>
+			&nbsp; <%= render(:partial => 'shared/nav_link', :locals => { :link_url => "/login", :link_text => "login" } ) %>
+			&nbsp; <%= render(:partial => 'shared/nav_link', :locals => { :link_url => "/signup", :link_text => "make my own Playmary" } ) %>
+		<% end-%>
+	</div>
+<% else %>
+
+	<!-- back to add a song link -->
+	<% if @show_back_link %>
+		<div class="top_nav">
+			<a href='<%=current_user.audiography.get_url()%>'>Go back and add my first song</a>
+		</div>
+	<% else %>
+		<br/>
+	<% end-%>
+<% end-%>
+
+<!-- flash -->
+<div class="flash_container">
+	<% if flash[:notice] %>
+		<span class="flash">
+			<%= flash[:notice] %>
+		</span>
+	<% else %>
+		<br/>
+	<% end-%>
+</div>

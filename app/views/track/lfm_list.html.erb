@@ -1,0 +1,20 @@
+<div class="page_content_holder">
+	<div class="page_title_holder">
+		<div class="page_title"><%= @title %></div>
+	</div><br/>
+	<% if !@tracks || @tracks.length == 0 %>
+		None.
+	<% else %>
+		<% i = 0 %>
+		<% artists = [] %>
+		<% for track_identifier in @tracks.keys.sort { |x,y| @tracks[y][:playcount].to_i <=> @tracks[x][:playcount].to_i } %>
+			<% track = @tracks[track_identifier] %>
+			<% new_artist = !artists.include?(track[:artist]) %>
+			<% artists << track[:artist] if new_artist %>
+			<%= track[:playcount].to_s + ": " + (new_artist ? "<strong>" : "") + track[:artist] + (new_artist ? "</strong>" : "") + ", " + track[:title] %><br/>
+			<% i += 1 %>
+			<% break if i > 40 %>
+		<% end-%>
+	<% end-%>
+	<br/><br/>
+</div>

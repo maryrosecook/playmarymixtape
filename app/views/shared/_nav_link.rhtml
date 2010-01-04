@@ -1,0 +1,5 @@
+<% if Linking.at_url?(Linking.rootise(link_url), Linking.rootise(request.request_uri)) %>
+	<%= link_text %>
+<% else %>
+	<a href='<%=Linking.rootise(link_url)%>'><%=link_text%></a>
+<% end-%>

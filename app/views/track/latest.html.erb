@@ -1,0 +1,14 @@
+<div class="page_content_holder">
+	<%= render(:partial => 'track/playlist_setup', :locals => {:show => "latest", :identifier => nil }) %>
+	<%= render(:partial => 'track/list_title', :locals => { :title => @title, :follow_link => @follow_link, :itunes_link => @itunes_link }) %>
+
+	<!-- show items -->
+	<% if @items.length > 0 %>
+		<%= render(:partial => 'track/list', :locals => {:items => @items,
+																										 :user_can_edit => @user_can_edit,
+																										 :link_to_audiography => true }) %>
+	<% end-%>
+	
+	<div id="openplayer" class="flash_player"></div>
+	<%= javascript_include_tag 'opentape' %>
+</div>

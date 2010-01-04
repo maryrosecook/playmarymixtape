@@ -1,0 +1,27 @@
+<% form_tag do -%>
+	<%= hidden_field :track, :id %>
+	<table width=412>
+		<tr>
+			<td class="field_title">Artist</td>
+			<td class="field"><%= text_field :track, :artist, :size => 43, :class => 'text_field' %></td>
+		</tr>
+		<tr>
+			<td class="field_title">Title</td>
+			<td class="field"><%= text_field :track, :title, :size => 43, :class => 'text_field' %></td>
+		</tr>
+		<tr>
+			<td class="field_title">Comment&nbsp;</td>
+			<td class="field"><%= text_area :track, :comment, :rows => 5, :cols => 47 %></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td class="audio_field_title">
+				e.g. what you associate this song with, what you were doing when you first heard it, what it means to you.
+			</td>
+		</tr>
+		<tr>
+			<td class="field_title"></td>
+			<td class="field"><%= submit_tag "Save", :class => 'submit_button' %></td>
+		</tr>
+	</table>
+<% end-%>

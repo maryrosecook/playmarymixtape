@@ -1,0 +1,20 @@
+<div class="page_content_holder">
+	<h1>
+		<%= @title %>
+		<% if @track %>
+			<span class="track_delete">or <%= link_to "delete", :controller => "track", :action => "delete", :id => @track.id %></span>
+		<% end-%>
+	</h1><br/>
+	
+	<% if @cannot_edit_that_audio %>
+		You may not edit this song.
+	<% elsif @could_not_find_audio %>
+		That song could not be found.
+	<% elsif @not_logged_in %>
+		To edit a song, you must 
+		<%= link_to "signup", :controller => "account", :action => "signup" %>
+		or <%= link_to "login", :controller => "account", :action => "login" %>.
+	<% elsif @track %> <!-- can edit! -->
+		<%= render(:partial => 'track/form')%>
+	<% end-%>
+</div>

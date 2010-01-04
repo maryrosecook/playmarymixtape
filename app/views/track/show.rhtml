@@ -1,0 +1,21 @@
+<div class="page_content_holder">
+	<% if @tracks.length == 0 %>
+		<div class="page_title_holder">
+			<div class="page_title"><% @title %></div>
+		</div><br/><br/>
+	<% else %>
+		<%= render(:partial => 'track/playlist_setup', :locals => { :show => "track", :identifier => @tracks[0].permalink() }) %>
+	
+		<!-- show audiography -->
+		<% if @tracks.length > 0 %>
+			<%= render(:partial => 'track/list', :locals => {:items => @items,
+																											 :user_can_edit => false,
+																											 :link_to_audiography => true }) %>
+		<% end-%>
+		
+		<div id="openplayer" class="flash_player"></div>
+		<%= javascript_include_tag 'opentape' %>
+	<% end-%>
+	
+	<br/><br/>
+</div>

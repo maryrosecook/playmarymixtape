@@ -1,0 +1,21 @@
+<br/>
+<div class="instructions_bar">
+	click song<%= "s" if items.length > 1 %> to play
+</div>
+<br/>
+
+<% @i = 0 %>
+<ul id="track_list" class="audiography_items">
+<% for item in items %>
+	<% track = item[1] %>
+	<%= render(:partial => 'track/show', :locals => {:track => track,
+																									 :user_can_edit => user_can_edit,
+																									 :link_to_audiography => link_to_audiography}) %>
+	<% @i += 1 %>
+<% end-%>
+</ul>
+
+<!-- setup draggable songs -->
+<% if user_can_edit %>
+	<%= sortable_element 'track_list', :scroll => 'window', :handle => "track_controls", :url => {:action => 'sort_tracks'} %>
+<% end-%>

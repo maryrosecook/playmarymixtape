@@ -1,0 +1,40 @@
+<div class="page_content_holder">
+	<!-- no audiography here -->
+	<% if @no_audiography %>
+		<div class="page_title_holder">
+			<div class="page_title"><%= @title %></div>
+		</div><br/><br/>
+		
+	<!-- show audigraphy -->
+	<% else %>
+		<%= render(:partial => 'track/playlist_setup', :locals => { :show => "audiography", :identifier => @url_title }) %>
+		<%= render(:partial => 'track/list_title', :locals => { :title => @title,
+																														:follow_link => @follow_link,
+																														:itunes_link => @itunes_link }) %>
+	
+		<!-- edit audiography -->
+		<% if @user_can_edit %>
+			<table border=0 cellpadding=0 cellspacing=0>
+				<tr>
+					<td width=200 valign=top><%= render(:partial => 'upload_mp3_form') %></td>
+					<td width=200 valign=top></td>
+					<td width=150></td>
+				</tr>
+			</table>
+			<br/>
+		<% end-%>
+	
+		<!-- show audiography -->
+		<% if @tracks.length > 0 %>
+			<%= render(:partial => 'track/list', :locals => {:items => @items,
+																											 :user_can_edit => @user_can_edit,
+																											 :link_to_audiography => false }) %>
+		<!-- show link to example audiography -->
+		<% elsif @show_see_example %>
+			<br/><h2><a href='<%=Linking.home()%>'>See an example of what I can make</a></h2>
+		<% end-%>
+		
+		<div id="openplayer" class="flash_player"></div>
+		<%= javascript_include_tag 'opentape' %>
+	<% end-%>
+</div>

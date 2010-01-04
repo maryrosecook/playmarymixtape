@@ -1,0 +1,23 @@
+sudo gem install httparty
+
+
+
+*
+		create table import_tracks(id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT, title text, artist text, added INT(11) DEFAULT 0, audiography_id INT(11));
+
+
+
+
+*
+	alter table users add column last_fm_username varchar(500);
+	alter table users add column last_interrogated_fm datetime;
+
+
+
+
+
+*
+	alter table tracks add column sort_order int(11) default 0;
+
+*
+	create table suggestions(id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT, body text);

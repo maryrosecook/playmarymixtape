@@ -1,0 +1,54 @@
+Playmary
+Your life in songs.
+
+See in action: http://playmary.com
+
+By: maryrosecook
+http://maryrosecook.com
+maryrosecook@maryrosecook.com
+
+---
+
+Users can search for a song, select it and then have it automatically pulled to Amazon S3 from its
+location on the web and included in their Playmary.  Seeqpod is used for song search.
+
+Users may also upload mp3s.
+
+---
+
+Initial setup
+
+- Pull the code to your machine.
+
+- Create a folder called log in the root of your app.
+
+- Create a database.
+
+- database.yml file
+	- Create it in config/
+	- Add your dev database details. e.g:
+		development:
+		    adapter: mysql
+		    database: playmary_development
+		    username: root
+		    password: 
+		    host: localhost
+
+- Create the database structure:
+	- In your terminal:
+		cd route/to/playmary/folder
+		rake db:schema:load
+
+- Amazon S3
+	- Sign up at http://aws.amazon.com
+	- Create a bucket.
+
+- Get at least one Seeqpod API key from http://seeqpod.com
+
+- Decide what the url_title of *your* personal Playmary will be. e.g. maryrosecook gives it a URL of yourdomain.com/maryrosecook
+
+- config.yml file
+	- Go into the config/ directory and rename the config.example.yml file to config.yml
+	- Fill in your Seeqpod API keys, S3 details, contact data and default url_title
+	
+- Go.

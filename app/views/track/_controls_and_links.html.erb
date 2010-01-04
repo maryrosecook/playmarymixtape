@@ -1,0 +1,46 @@
+<div class="track_controls" style="display:none;"
+     id="<%=controls_dom_id%>" 
+		 onmouseover="Element.show('<%=controls_dom_id%>')"
+ 		 onmouseout="Element.hide('<%=controls_dom_id%>')">
+
+	<!-- link to audiography -->
+	<% if link_to_audiography %>
+		<div class="track_audiography_holder">
+			<a href='<%= track.audiography.get_url() %>'><%=track.audiography.title%></a>
+		</div>
+	<% end-%>
+	
+	<% if user_can_edit %>
+	
+		<!-- reorder -->
+		<span onmouseover="Element.show('drag_handle_in<%=track.id%>');
+											 Element.hide('drag_handle_out<%=track.id%>');"
+					 onmouseout="Element.hide('drag_handle_in<%=track.id%>');
+											 Element.show('drag_handle_out<%=track.id%>');">
+			<img src="/images/drag_handle_grey.gif" class="drag_handle handle" id='drag_handle_out<%=track.id%>' title='Reorder song' alt='Reorder song'>
+			<img src="/images/drag_handle.gif" class="drag_handle handle" id='drag_handle_in<%=track.id%>' style="display:none;" title='Reorder song' alt='Reorder song'>
+		</span>
+		
+		<!-- edit -->
+		<span onmouseover="Element.show('edit_handle_in<%=track.id%>');
+											 Element.hide('edit_handle_out<%=track.id%>');"
+					 onmouseout="Element.hide('edit_handle_in<%=track.id%>');
+											 Element.show('edit_handle_out<%=track.id%>');">
+			<a href='/track/edit/<%=track.id%>'>
+				<img src='/images/edit_handle_grey.gif' class='edit_handle handle' id='edit_handle_out<%=track.id%>' title='Edit song' alt='Edit song'>
+				<img src='/images/edit_handle.gif' class='edit_handle handle' id='edit_handle_in<%=track.id%>' style="display:none;" title='Edit song' alt='Edit song'>
+			</a>
+		</span>
+	<% end-%>
+	
+	<!-- permalink -->
+	<span onmouseover="Element.show('permalink_handle_in<%=track.id%>');
+										 Element.hide('permalink_handle_out<%=track.id%>');"
+				 onmouseout="Element.hide('permalink_handle_in<%=track.id%>');
+										 Element.show('permalink_handle_out<%=track.id%>');">
+		<a href="<%=track.full_permalink()%>">
+			<img src='/images/permalink_handle_grey.gif' class='edit_handle handle' id='permalink_handle_out<%=track.id%>' title='Go to song' alt='Go to song'>
+			<img src='/images/permalink_handle.gif' class='edit_handle handle' id='permalink_handle_in<%=track.id%>' style="display:none;" title='Go to song' alt='Go to song'>
+		</a>
+	</span>
+</div>

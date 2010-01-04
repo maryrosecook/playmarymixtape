@@ -1,0 +1,12 @@
+<% form_tag do -%>
+	<table width=412>
+		<tr>
+			<td class="field_title">Suggestion</td>
+			<td class="field"><%= text_field :suggestion, :body, :size => 25, :class => 'text_field' %></td>
+		</tr>
+		<tr>
+			<td class="field_title"></td>
+			<td class="field"><%= submit_tag "Save", :class => 'submit_button' %></td>
+		</tr>
+	</table>
+<% end-%>
