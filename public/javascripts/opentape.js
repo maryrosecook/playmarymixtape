@@ -1,26 +1,25 @@
 // Key input management code // 
 
-document.onkeyup = KeyCheck;
+document.onkeyup = keyCheck;
 
-function KeyCheck(e)
+function keyCheck(e)
 {
-   var KeyID = (window.event) ? event.keyCode : e.keyCode;
+	var keyId = (window.event) ? event.keyCode : e.keyCode;
 
-   switch(KeyID)
-   {
-			case 32:
-			togglePlayback('song' + currentTrack);
-			break;
-			
-      case 37:
-			previousSong();
-      break;
-
-      case 39:
-			nextSong();
-      break;
-   }
-
+	switch(keyId)
+	{
+		case 32:
+		togglePlayback('song' + currentTrack);
+		break;
+  	
+		case 37:
+		previousSong();
+		break;
+  	
+		case 39:
+		nextSong();
+		break;
+	}
 }
 
 // Player management code //
