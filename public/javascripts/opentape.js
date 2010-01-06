@@ -8,14 +8,17 @@ function keyCheck(e)
 
 	switch(keyId)
 	{
-		case 32:
+		// p
+		case 80:
 		togglePlayback('song' + currentTrack);
 		break;
   	
+		// left arrow
 		case 37:
 		previousSong();
 		break;
-  	
+
+		// right arrow  	
 		case 39:
 		nextSong();
 		break;

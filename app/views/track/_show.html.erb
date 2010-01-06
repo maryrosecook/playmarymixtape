@@ -1,7 +1,15 @@
+<script type="text/javascript">
+	function showKeyboardHelp()
+	{
+		Element.show('keyboard_control_help');
+		Element.hide('mouse_control_help');
+	}
+</script>
+
 <!-- details -->
-<% onclick_val = "" %>
+<% onclick_val = "showKeyboardHelp();" %>
 <% if track.playable?() %>
-	<% onclick_val = "togglePlayback('song#{@i}');"%>
+	<% onclick_val += "togglePlayback('song#{@i}');"%>
 <% end-%>
 
 <% track_dom_id = 'track_' + track.id.to_s %>
