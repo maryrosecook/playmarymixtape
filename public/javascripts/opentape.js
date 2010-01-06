@@ -1,29 +1,36 @@
 // Key input management code // 
 
+var keyboardControl = true;
+
 document.onkeyup = keyCheck;
 
 function keyCheck(e)
 {
-	var keyId = (window.event) ? event.keyCode : e.keyCode;
-
-	switch(keyId)
+	if(keyboardControl) // if taking notice of keypresses (are on audiography and user not trying to add new mp3)
 	{
-		// p
-		case 80:
-		togglePlayback('song' + currentTrack);
-		break;
-  	
-		// left arrow
-		case 37:
-		previousSong();
-		break;
+		var keyId = (window.event) ? event.keyCode : e.keyCode;
 
-		// right arrow  	
-		case 39:
-		nextSong();
-		break;
+		switch(keyId)
+		{
+			// p
+			case 80:
+			togglePlayback('song' + currentTrack);
+			break;
+  	
+			// left arrow
+			case 37:
+			previousSong();
+			break;
+
+			// right arrow  	
+			case 39:
+			nextSong();
+			break;
+		}
 	}
 }
+
+function setKeyboardControl(inKeyboardControl) { keyboardControl = inKeyboardControl; }
 
 // Player management code //
 

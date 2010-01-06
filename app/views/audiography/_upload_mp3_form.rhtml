@@ -11,8 +11,8 @@
 		<span id="upload_rest_of_form" style="display:none;">
 			<div class="file_chosen">File chosen</div>
 			<%= text_area :track, :comment, :rows => 3, :class => "inactive_preloaded_field",
-										:onfocus => "processPreloadedText(this, 'onfocus', '#{Track::DEFAULT_COMMENT}');",
-										:onblur => "processPreloadedText(this, 'onblur', '#{Track::DEFAULT_COMMENT}');" %><br/>
+										:onfocus => "setKeyboardControl(false); processPreloadedText(this, 'onfocus', '#{Track::DEFAULT_COMMENT}');",
+										:onblur => "setKeyboardControl(true); processPreloadedText(this, 'onblur', '#{Track::DEFAULT_COMMENT}');" %><br/>
 									
 			<%= submit_tag "Upload", :class => 'upload_submit_button', :onclick => "disableWith(this, 'Uploading...');
 																																							Element.show('upload_waiting_instructions');" %><br/>

@@ -83,7 +83,8 @@ textarea { border: 1px solid #224; width:296; font-size: 12px; font-family:'Luci
 .track_artist_and_title { line-height: 19px; }
 .track_content { color:#224; font-size:15px;  vertical-align:top; cursor:pointer; }
 .track_comment { color:#224; font-size:12px; padding:2 0 0 0; }
-.track_clock { color:#d00; font-size:15px; float:right; vertical-align:top; display:inline;}
+.track_clock { color:#a00; font-size:15px; float:right; vertical-align:top; display:inline;}
+.green { color:#070; }
 .track_play_stop { vertical-align:text-top; text-align:right; width:42; }
 .track_edit { font-size:10px;  }
 .track_delete { font-size: 12px; }
