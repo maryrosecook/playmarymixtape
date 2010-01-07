@@ -4,13 +4,12 @@
 # You'll need to sign up at http://aws.amazon.com
 aws_access_key_id: 
 aws_secret_access_key: 
-bucket_name: e.g. static.playmary.com
-static_repository: e.g. http://static.playmary.com.s3.amazonaws.com/  If you've set up a CNAME record, http://bucket_name e.g. http://static.playmary.com/
+bucket_name: # e.g. static.playmary.com
+static_repository: # e.g. http://static.playmary.com.s3.amazonaws.com/  If you've set up a CNAME record, http://bucket_name e.g. http://static.playmary.com/
 
 # Email addresses to send tests and error traces to.
-communication_email_address: e.g. you@yourdomain.com
-test_recipient_email_address: e.g. you@yourdomain.com
-error_log_email_address: e.g. you@yourdomain.com
+communication_email_address: # e.g. you@yourdomain.com
+error_log_email_address: # e.g. you@yourdomain.com
 
 # url_title of audiography to show on homepage
-default_url_title: e.g. yourname
+default_url_title: # e.g. yourname

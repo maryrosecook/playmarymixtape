@@ -43,12 +43,10 @@ Initial setup
 	- Sign up at http://aws.amazon.com
 	- Create a bucket.
 
-- Get at least one Seeqpod API key from http://seeqpod.com
-
 - Decide what the url_title of *your* personal Playmary will be. e.g. maryrosecook gives it a URL of yourdomain.com/maryrosecook
 
 - config.yml file
 	- Go into the config/ directory and rename the config.example.yml file to config.yml
-	- Fill in your Seeqpod API keys, S3 details, contact data and default url_title
+	- Fill in your S3 details, contact data and default url_title
 	
 - Go.

@@ -14,7 +14,7 @@ function keyCheck(e)
 		{
 			// p
 			case 80:
-			togglePlayback('song' + currentTrack);
+			togglePlayback(null);
 			break;
   	
 			// left arrow
@@ -121,7 +121,10 @@ function setupTrackDisplay(id) {
 }
 
 function togglePlayback(id) {
-	id = id.replace(/song/,'');
+	if(id != null)
+		id = id.replace(/song/,'');
+	else
+		id = currentTrack; // no track number request made
 
 	songClock = document.getElementById('track_clock' + id);
 
