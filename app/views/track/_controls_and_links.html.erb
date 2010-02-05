@@ -6,7 +6,7 @@
 	<!-- link to audiography -->
 	<% if link_to_audiography %>
 		<div class="track_audiography_holder">
-			<a href='<%= track.audiography.get_url() %>'><%=track.audiography.title%></a>
+			<a href='<%= track.audiography.get_url() %>'><%=track.audiography.get_title %></a>
 		</div>
 	<% end-%>
 	

@@ -22,19 +22,23 @@ class Audiography < ActiveRecord::Base
     return track
   end
 
-  def get_url()
+  def get_url
     Linking::audiography(self)
   end
   
-  def get_xml_url()
+  def get_title
+    Util.ne(self.title) ? self.title : self.url_title
+  end
+  
+  def get_xml_url
     Linking::audiography_xml(self)
   end
   
-  def get_itunes_url()
+  def get_itunes_url
     Linking::audiography_itunes(self)
   end
   
-  def tracks()
+  def tracks
     Track.find(:all, :conditions => "audiography_id = #{self.id}", :order => "sort_order ASC, created_at DESC")
   end
   

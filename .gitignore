@@ -8,6 +8,6 @@ Capfile
 config/database.yml
 config/deploy.rb
 config/config.yml
-public/mp3/*.mp3
+public/mp3s/*.mp3
 .hero
 
