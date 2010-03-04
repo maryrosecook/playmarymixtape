@@ -1,8 +1,0 @@
-#!/bin/bash
-echo -n "Message: "
-stty_orig=`stty -g`
-read MESSAGE
-stty $stty_orig
-git add -A
-git commit -m "$MESSAGE"
-git push
