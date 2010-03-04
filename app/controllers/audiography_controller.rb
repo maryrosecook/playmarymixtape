@@ -106,8 +106,9 @@ class AudiographyController < ApplicationController
       no_nav? && logged_in? && current_user.audiography != current_audiography
     end
 
+    # returns true if at own audiography and its empty and there is a default audiography
     def show_see_example_link?(current_audiography)
-      at_own_empty_audiography?(current_audiography)
+      at_own_empty_audiography?(current_audiography) && Audiography.default
     end
 
     def at_own_empty_audiography?(current_audiography)

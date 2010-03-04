@@ -49,7 +49,7 @@ class Audiography < ActiveRecord::Base
     elsif identifier
       audiography = Audiography.find_by_url_title(identifier)
     else
-      audiography = Audiography.find_by_url_title(Util::get_default_url_title())
+      audiography = self.default
     end
 
     return audiography
@@ -103,5 +103,9 @@ class Audiography < ActiveRecord::Base
       end
       i += 1
     end
+  end
+  
+  def self.default
+    self.find_by_url_title Util::get_default_url_title()
   end
 end

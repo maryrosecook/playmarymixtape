@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   def claim
     if logged_in? && current_user.fake == 1 && current_user.audiography
       @title = "Claim my Playmary"
+      @show_form = true
       @audiography_url = current_user.audiography.get_url()
       if request.post?
         if User.email_available?(params[:user][:email]) && Audiography.url_title_available?(params[:audiography][:url_title])
@@ -45,7 +46,8 @@ class UsersController < ApplicationController
         @user_to_claim = current_user
       end
     else
-      @title = "There is no Playmary to claim."
+      @title = "There is no Playmary to claim"
+      @show_form = false
     end
   end
   
