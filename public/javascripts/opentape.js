@@ -43,6 +43,8 @@ var player;
 
 function playerReady(obj) {
 	var id = obj['id'];
+	if(!id)
+		id + "opentape";
 	var version = obj['version'];
 	var client = obj['client'];
 	isReady = 1;
