@@ -1,5 +1,8 @@
-# Pass the directory with the .mp3s in as an argument.  If you don't,
-# the script directory will be used.
+# Params: 
+#   Directory with the .mp3s.  Omit this and the script directory will be used.
+#   Audiography id.  The id of database record for the audiography to add these tracks to.
+# e.g.
+#   ruby mp3_dir_to_sql.rb "../../../Desktop/mp3s/" 606
 
 def esc_speech_and_apos(str)
   str = str.gsub(/"/, '\"')
@@ -14,28 +17,30 @@ end
 
 ###
 
-# switch to directory passed in command line, if it was provided
-if ARGV[0]
-  Dir.chdir ARGV[0]
-end
+Dir.chdir ARGV[0] if ARGV[0] # switch to directory passed in command line, if it was provided
 
-base_url = "http://static.playmary.com/"
-
-i = 1
-mp3_filenames = Dir.entries(".").find_all { |x| x.match("\.mp3") }
-for filename in mp3_filenames
-  url = base_url + esc_speech_and_apos(filename)
-  title = esc_speech_and_apos(filename.gsub(/\.mp3/, ""))
-  artist = esc_speech_and_apos(filename.gsub(/\.mp3/, ""))
+if !ARGV[1]
+  puts "You need to specify an audiography id."
+else
+  audiography_id = ARGV[1]
+  base_url = "http://static.playmary.com/"
   comment = ''
-  audiography_id = 606
-  created_at = time_to_sql_time(Time.now)
-  updated_at = time_to_sql_time(Time.now)
-  permalink = artist.downcase.gsub(/\W/, "").gsub(/\d/, "")
-  sort_order = i
+    
+  i = 1
+  mp3_filenames = Dir.entries(".").find_all { |x| x.match("\.mp3") }
+  for filename in mp3_filenames
+    url = base_url + esc_speech_and_apos(filename)
+    title = esc_speech_and_apos(filename.gsub(/\.mp3/, ""))
+    artist = esc_speech_and_apos(filename.gsub(/\.mp3/, ""))
+    created_at = time_to_sql_time(Time.now)
+    updated_at = time_to_sql_time(Time.now)
+    permalink = artist.downcase.gsub(/\W/, "").gsub(/\d/, "")
+    sort_order = i
   
-  sql = "insert into tracks (url, title, artist, comment, audiography_id, created_at, updated_at, permalink, sort_order) VALUES ('#{url}', '#{title}', '#{artist}', '#{comment}', #{audiography_id}, '#{created_at}', '#{updated_at}', '#{permalink}', #{sort_order});"
-  puts sql
+    sql = "insert into tracks (url, title, artist, comment, audiography_id, created_at, updated_at, permalink, sort_order) VALUES ('#{url}', '#{title}', '#{artist}', '#{comment}', #{audiography_id}, '#{created_at}', '#{updated_at}', '#{permalink}', #{sort_order});"
+    puts "\n" + sql + "\n"
 
-  i += 1
+    i += 1
+  end
+  puts "\n"
 end
