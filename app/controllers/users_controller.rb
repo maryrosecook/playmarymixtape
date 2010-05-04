@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def claim
     if logged_in? && current_user.fake == 1 && current_user.audiography
-      @title = "Claim my Playmary"
+      @title = "Claim your Playmary"
       @show_form = true
       @audiography_url = current_user.audiography.get_url()
       if request.post?

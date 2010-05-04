@@ -116,6 +116,6 @@ class AudiographyController < ApplicationController
     end
 
     def get_audiography_title(current_audiography)
-      return at_own_empty_audiography?(current_audiography) ? "Add my first song" : current_audiography.url_title
+      return at_own_empty_audiography?(current_audiography) ? "Add your first song" : current_audiography.url_title
     end
 end
