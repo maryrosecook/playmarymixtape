@@ -1,4 +1,4 @@
-xml.instruct! :xml, :version=>"1.0" 
+xml.instruct! :xml, :version=>"1.0"
 xml.rss(:version=>"2.0"){
   xml.channel{
     xml.title(@title)
@@ -9,7 +9,6 @@ xml.rss(:version=>"2.0"){
     for track in @tracks
       render(:partial => 'track/show', :locals => { :parent_xml => xml, :track => track, :permalinks => @permalinks })
       i += 1
-      break if i > 20
     end
   }
 }
