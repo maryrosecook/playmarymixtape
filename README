@@ -1,8 +1,6 @@
 Playmary
 Your life in songs.
 
-See in action: http://playmary.com
-
 By: maryrosecook
 http://maryrosecook.com
 maryrosecook@maryrosecook.com
@@ -28,7 +26,7 @@ Initial setup
 		    adapter: mysql
 		    database: playmary_development
 		    username: root
-		    password: 
+		    password:
 		    host: localhost
 
 - Create the database structure:
@@ -43,7 +41,7 @@ Initial setup
 - config.yml file
 	- Go into the config/ directory and rename the config.example.yml file to config.yml
 	- Fill in your S3 details and contact data
-	
+
 - Run your app:
 	- In your terminal:
 		cd route/to/playmary/folder
